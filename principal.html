@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Visual Stelarys</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.0.1/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.0.1/skulpt-stdlib.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.10.5/brython.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/terminal/termi.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/tab/tab.css">
+    <link rel="stylesheet" href="css/filder.css">
+    <link rel="stylesheet" href="css/bar.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/extension.css">
+    <script src="JS/runes/console.js"></script>
+    <script src="JS/terminal/runcode.js"></script>
+    <script src="JS/monaco.js"></script>
+    <script src="JS/runes/runcode.js"></script>
+    <script src="JS/files/editor.js"></script>
+    <script src="JS/files/fileManager.js"></script>
+    <script src="JS/contextMenu.js"></script>
+    <script src="JS/themeManagement.js"></script>
+    <script src="JS/extensionManagement.js"></script>
+</head>
+<body onload="brython()">
+    <div class="toolbar">
+        <button onclick="newFile()">
+            <i class="fas fa-plus"></i> Nuevo
+        </button>
+        <button onclick="openFile()">
+            <i class="fas fa-folder-open"></i> Abrir
+        </button>
+        <button onclick="saveFile()">
+            <i class="fas fa-save"></i> Guardar
+        </button>
+        <button onclick="runCode()">
+            <i class="fas fa-play"></i> Ejecutar
+        </button>      
+        <button onclick="toggleTheme()">
+            <i class="fas fa-paint-brush"></i> Tema
+        </button>
+        <button onclick="toggleExtensions()">
+            <i class="fas fa-puzzle-piece"></i> Extensiones
+        </button>
+    </div>
+    <div id="tabs-container">
+        <div class="tab active">Bienvenida<span class="tab-close">×</span></div>
+    </div>
+    <div class="main-container">
+        <div class="activity-bar">
+            <i class="fas fa-file-code active" title="Explorador"></i>
+            <i class="fas fa-search" title="Buscar"></i>
+            <i class="fas fa-code-branch" title="Control de versiones"></i>
+            <i class="fas fa-bug" title="Debugger"></i>
+            <i class="fas fa-puzzle-piece" title="Extensiones"></i>
+        </div>
+
+        <div class="sidebar">
+            <div class="sidebar-header">
+                EXPLORADOR
+                <div>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+            </div>
+            <div class="search-panel">
+                <input type="text" class="search-input" placeholder="Buscar archivos...">
+            </div>
+            <div class="file-explorer" id="file-explorer">
+            </div>
+        </div>
+
+        <div class="editor-container">
+            <div class="tabs" id="editor-tabs">
+            </div>
+            <div id="monaco-editor"></div>
+        </div>
+
+        <div class="extension-panel" id="extension-panel">
+            <div class="extension-header">
+                <h3>Extensiones</h3>
+            </div>
+            <div class="extension-search">
+                <input type="text" class="search-input" placeholder="Buscar extensiones...">
+            </div>
+            <div class="extension-list">
+                <div class="extension-item">
+                    <h4>Python</h4>
+                    <p>Soporte para Python</p>
+                </div>
+                <div class="extension-item">
+                    <h4>ESLint</h4>
+                    <p>JavaScript Linter</p>
+                </div>
+                <div class="extension-item">
+                    <h4>Prettier</h4>
+                    <p>Formateador de código</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="status-bar">
+        <div class="status-bar-item">
+            <i class="fas fa-code-branch"></i> main
+        </div>
+        <div class="status-bar-item" id="cursor-position">
+        <div class="status-bar-item" id="cursor-position">
+            Línea: 1, Columna: 1
+        </div>
+        <div class="status-bar-item">
+            <i class="fas fa-check-circle"></i> Ready
+        </div>
+    </div>    
+    <div id="console-container">
+        <div id="console" class="console">
+            <button id="close-console" onclick="closeConsole()">x</button>
+        </div>
+    </div>
+    
+    <input type="file" id="fileInput" style="display: none;" accept=".txt,.js,.html,.css" onchange="loadFile(event)">
+</body>
+</html>

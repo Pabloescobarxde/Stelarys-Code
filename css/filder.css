@@ -1,0 +1,106 @@
+#file-explorer {
+    font-family: Arial, sans-serif;
+    margin: 10px;
+    padding-left: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: #2f2f2f00;
+    color: #bbb;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(91, 91, 91, 0.159);
+}
+
+.file-item {
+    cursor: pointer;
+    padding: 10px 15px;
+    margin: 4px;
+    display: block;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 16px;
+    color: #ccc;
+}
+
+.file-item:hover {
+    background-color: #2b2b2b33;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.077);
+}
+
+.file-item.active {
+    background-color: #333;
+    border-left: 5px solid #00bcd4;
+}
+
+.folder {
+    font-weight: bold;
+    color: #5c5c5c6d;
+}
+
+.folder:before {
+    content: "📁 ";
+    font-size: 18px;
+}
+
+.file-item:before {
+    content: "- ";
+}
+
+.folder + div {
+    padding-left: 20px;
+}
+
+.folder > div {
+    display: none;
+    margin-top: 5px;
+}
+
+.file-item.folder {
+    color: #ffffff;
+    font-size: 16px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.file-item.folder:hover {
+    color: #ffffff;
+}
+
+.file-item.file {
+    color: #ff0000;
+}
+
+.file-item.folder i,
+.file-item.file i {
+    margin-right: 8px;
+    font-size: 22px;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.file-item:hover i {
+    color: #00bcd4;
+}
+
+.file-item.folder i {
+    font-size: 24px;
+}
+
+.file-item.subfolder {
+    margin-left: 20px;
+}
+
+.file-item.subfolder i {
+    color: #ff9800;
+}
+
+.file-item:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.5);
+}
+
+.file-item:hover span {
+    color: #fff;
+}
+
+.file-item.folder.subfolder {
+    margin-left: 40px;
+}
